@@ -20,12 +20,14 @@ struct APIClient {
     
     func run<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> { // 2
         let json = decoder
+        print("Request \(request.url?.absoluteString ?? "")")
         return URLSession.shared
             .dataTaskPublisher(for: request) // 3
             .tryMap { result -> Response<T> in
                 let value = try json.decode(T.self, from: result.data) // 4
                 return Response(value: value, response: result.response) // 5
             }
+            .print()
             .receive(on: DispatchQueue.main) // 6
             .subscribe(on: DispatchQueue.global(qos: .background))
             .eraseToAnyPublisher() // 7

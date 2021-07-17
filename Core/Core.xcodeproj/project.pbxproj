@@ -12,6 +12,8 @@
 		979B4822268782C2006E5BE7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979B4821268782C2006E5BE7 /* APIClient.swift */; };
 		979B48242687848D006E5BE7 /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979B48232687848D006E5BE7 /* UserListModel.swift */; };
 		979B482626878607006E5BE7 /* UserListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979B482526878607006E5BE7 /* UserListRepository.swift */; };
+		97EA927B26A1C0710075AC89 /* UserListRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA927A26A1C0710075AC89 /* UserListRepositoryImpl.swift */; };
+		97EA927E26A1C0D40075AC89 /* UserServicesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA927D26A1C0D40075AC89 /* UserServicesImpl.swift */; };
 		DC283F80A43894C5BA643ADD /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486BF431D4DADB0E6BAA5EC3 /* Pods_Core.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		979B4821268782C2006E5BE7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		979B48232687848D006E5BE7 /* UserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
 		979B482526878607006E5BE7 /* UserListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRepository.swift; sourceTree = "<group>"; };
+		97EA927A26A1C0710075AC89 /* UserListRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRepositoryImpl.swift; sourceTree = "<group>"; };
+		97EA927D26A1C0D40075AC89 /* UserServicesImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServicesImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				979B482026878270006E5BE7 /* Model */,
+				97EA927C26A1C0980075AC89 /* Network */,
 				979B481C26877F88006E5BE7 /* Repository */,
 				979B481B26877F6B006E5BE7 /* Services */,
 				979B480D2687399D006E5BE7 /* Core.h */,
@@ -83,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				979B481D268780D3006E5BE7 /* UserService.swift */,
-				979B4821268782C2006E5BE7 /* APIClient.swift */,
+				97EA927D26A1C0D40075AC89 /* UserServicesImpl.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				979B482526878607006E5BE7 /* UserListRepository.swift */,
+				97EA927A26A1C0710075AC89 /* UserListRepositoryImpl.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -102,6 +108,14 @@
 				979B48232687848D006E5BE7 /* UserListModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		97EA927C26A1C0980075AC89 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				979B4821268782C2006E5BE7 /* APIClient.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		C730EE3B857433FE629BD0CD /* Frameworks */ = {
@@ -218,8 +232,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				979B481E268780D3006E5BE7 /* UserService.swift in Sources */,
+				97EA927B26A1C0710075AC89 /* UserListRepositoryImpl.swift in Sources */,
 				979B48242687848D006E5BE7 /* UserListModel.swift in Sources */,
 				979B482626878607006E5BE7 /* UserListRepository.swift in Sources */,
+				97EA927E26A1C0D40075AC89 /* UserServicesImpl.swift in Sources */,
 				979B4822268782C2006E5BE7 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

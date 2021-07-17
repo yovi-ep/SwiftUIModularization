@@ -2,7 +2,19 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:UserSearch/UserSearch.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Favorites/Favorites.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Detail/Detail.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Home/Home.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIComponent/UIComponent.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Core/Core.xcodeproj">
