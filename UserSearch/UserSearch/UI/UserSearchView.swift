@@ -27,7 +27,10 @@ public struct UserSearchView: View {
                     
                     ForEach(viewModel.users) { user in
                         NavigationLink(destination: DetailView()) {
-                            UserListRow(name: user.login, logoLink: user.avatar_url)
+                            UserListRow(name: user.login ?? "", logoLink: user.avatar_url  ?? "")
+                                .onAppear {
+                                    viewModel.inLoadMore = user
+                                }
                         }
                     }
                 }

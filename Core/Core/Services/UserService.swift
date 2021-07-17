@@ -9,5 +9,9 @@ import Foundation
 import Combine
 
 public protocol UserServices {
-    func get(_ path: String) -> AnyPublisher<UserListResponse, Error>
+    func get(
+        _ keyword: String,
+        page: Int,
+        perPage: Int
+    ) -> AnyPublisher<UserListResponse, Error>
 }

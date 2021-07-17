@@ -11,19 +11,22 @@ import Combine
 public struct UserServicesImpl: UserServices {
     public init() {}
     
-    public func get(_ path: String) -> AnyPublisher<UserListResponse, Error> {
+    public func get(
+        _ keyword: String,
+        page: Int,
+        perPage: Int
+    ) -> AnyPublisher<UserListResponse, Error> {
         guard var components = URLComponents(string: "https://api.github.com/search/users")
         else { fatalError("Couldn't create URLComponents") }
+        
         components.queryItems = [
-            URLQueryItem(name: "q", value: path),
-            URLQueryItem(name: "page", value: "1"),
-            URLQueryItem(name: "per_page", value: "10")
+            URLQueryItem(name: "q", value: keyword),
+            URLQueryItem(name: "page", value: String(page)),
+            URLQueryItem(name: "per_page", value: String(perPage))
         ]
         
-        let request = URLRequest(url: components.url!)
-        
-        return APIClient.shared.run(request)
-            .map(\.value)
+        return APIClient.shared
+            .run(components.url!)
             .eraseToAnyPublisher()
     }
 }

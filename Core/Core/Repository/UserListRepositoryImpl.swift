@@ -15,7 +15,11 @@ public struct UserListRepositoryImpl: UserListRepository {
         self.service = service
     }
     
-    public func get(path: String) -> AnyPublisher<UserListResponse, Error> {
-        return self.service.get(path)
+    public func get(
+        keyword: String,
+        page: Int,
+        perPage: Int
+    ) -> AnyPublisher<UserListResponse, Error> {
+        return self.service.get(keyword, page: page, perPage: perPage)
     }
 }
