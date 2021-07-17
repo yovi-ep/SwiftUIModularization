@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+private var imageCache: [String: Data] = [:]
+
 public struct RemoteImage: View {
     @StateObject private var loader: Loader
     var loading: Image
@@ -31,22 +33,30 @@ public struct RemoteImage: View {
         var state = LoadState.loading
 
         init(url: String) {
-            guard let parsedURL = URL(string: url) else {
-                fatalError("Invalid URL: \(url)")
+            if (imageCache.contains(where: { $0.key == url})) {
+                self.data = imageCache[url]!
+                self.state = .success
+            } else {
+                guard let parsedURL = URL(string: url) else {
+                    fatalError("Invalid URL: \(url)")
+                }
+
+                DispatchQueue.global(qos: .background).async {
+                    URLSession.shared.dataTask(with: parsedURL) { data, response, error in
+                        if let data = data, data.count > 0 {
+                            imageCache[url] = data
+                            self.data = data
+                            self.state = .success
+                        } else {
+                            self.state = .failure
+                        }
+
+                        DispatchQueue.main.async {
+                            self.objectWillChange.send()
+                        }
+                    }.resume()
+                }
             }
-
-            URLSession.shared.dataTask(with: parsedURL) { data, response, error in
-                if let data = data, data.count > 0 {
-                    self.data = data
-                    self.state = .success
-                } else {
-                    self.state = .failure
-                }
-
-                DispatchQueue.main.async {
-                    self.objectWillChange.send()
-                }
-            }.resume()
         }
     }
 
